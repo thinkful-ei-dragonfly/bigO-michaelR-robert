@@ -166,3 +166,26 @@ to the maximum value of the argument n. Thus, this function has a runtime comple
 
 // 11. Tower of Hanoi
 
+function towerOfHanoi(num, source, dest, temp) {
+  if (num === 1) {
+    print(source, dest);
+  } else if (num === 2) {
+    towerOfHanoi(1, source, temp, dest);
+    towerOfHanoi(1, source, dest, temp);
+    print(temp, dest);
+  } else {
+    towerOfHanoi(num - 1, source, temp, dest);
+    towerOfHanoi(1, source, dest, temp);
+    towerOfHanoi(num - 1, temp, dest, source);
+  }
+}
+
+function print(s, d) {
+  console.log(`Moving disc from ${s} to ${d}`);
+}
+
+towerOfHanoi(4, 'A', 'C', 'B');
+
+// 3 disks require 7 moves. 4 disks require 15 moves. 5 disks require 31 moves.
+
+// This algorithm has a runtime complexity of O(2^n).
