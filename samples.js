@@ -184,8 +184,102 @@ function print(s, d) {
   console.log(`Moving disc from ${s} to ${d}`);
 }
 
-towerOfHanoi(4, 'A', 'C', 'B');
+// towerOfHanoi(4, 'A', 'C', 'B');
 
 // 3 disks require 7 moves. 4 disks require 15 moves. 5 disks require 31 moves.
 
 // This algorithm has a runtime complexity of O(2^n).
+
+
+/* Solving 1-7 recursion exercises, this time iteratively */
+
+
+function main() {
+  // countingSheep(3);
+  // console.log(powerCalculator(10, 3));
+  // console.log(reverseString('abcd'));
+  // console.log(triangularNum(3));
+  // console.log(stringSplitter('rob/rob/', '/'));
+  // console.log(fibonacci(7));
+  console.log(factorialFunc(5));
+}
+main();
+
+// 1. counting sheep
+function countingSheep(numSheep) {
+  for (let i = numSheep; i > 0; i--) {
+    console.log(`${i}: Another sheep jumps over the fence.`);
+  }
+  console.log('All sheep jumped over the fence.');
+}
+/* O(n) */
+
+// 2. power calculator
+function powerCalculator(base, exponent) {
+  return Math.pow(base, exponent);
+}
+/* O(log(n)) ...? */
+
+// 3. Reverse string
+function reverseString(str) {
+  let revString = '';
+  for (let i = str.length - 1; i >= 0; i--) {
+    revString += str.charAt(i);
+  }
+  return revString;
+}
+/* O(n) */
+
+// 4. nth Triangular Number
+function triangularNum(num) {
+  let cumulative = 0;
+  for (let i = 1; i <= num; i++) {
+    cumulative += i;
+  }
+  return cumulative;
+}
+/* O(n) */
+
+// 5. String Splitter
+function stringSplitter(str, separator) {
+  let newStr = '';
+  for (let i = 0; i < str.length; i++) {
+    if (str.charAt(i) === separator) {
+      newStr = str.slice(0, i);
+      newStr += str.slice(i + 1);
+      str = newStr;
+      i--;
+    }
+  }
+  return str;
+}
+/* O(n^2) */
+
+// 6. fibonacci sequence
+function fibonacci(num) {
+  let newArr = [];
+  if (num <= 0) {
+    'please supply a positive integer';
+  } else if (num === 1) {
+    newArr.push(1);
+  } else {
+    newArr.push(1);
+    newArr.push(1);
+    for (let i = 2; i < num; i++) {
+      newArr.push(newArr[i-2] + newArr[i-1]);
+    }
+  }
+  return newArr;
+}
+/* O(n) */
+
+
+// 7. Factorial
+function factorialFunc(num) {
+  let factNum = 1;
+  for (let i = num; i > 0; i--) {
+    factNum *= i;
+  }
+  return factNum;
+}
+/* O(n) */
